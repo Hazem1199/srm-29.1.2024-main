@@ -68,7 +68,9 @@ function hide() {
   loadingDiv.style.display = "none";
 }
 
-let newRowCounter = 0;
+// let newRowCounter = 0;
+let freshCount = 0; // initialize the counter
+
 
 async function diplayGroups(groupId) {
   change();
@@ -109,28 +111,39 @@ async function diplayGroups(groupId) {
             <td>${group.Grade}</td>
         `;
 
-        // let newRowCounter = 0; // declare the counter variable outside the loop
+        let newRowCounter = 0; // declare the counter variable outside the loop
 
-        // for (let i = 0; i < groups.length; i++) {
-        //   if (groupId == groups[i]["Code Group"]) {
-        //     // ... existing code ...
+        let StudentCount = 0; // initialize the counter
 
-        //     const newRow = document.createElement("tr");
-        //     // ... existing code ...
+        for (let i = 0; i < groups.length; i++) {
+          if (groupId == groups[i]["Code Group"]) {
+            // ... existing code ...
 
-        //     tableBody.appendChild(newRow);
-        //     ; // increment the counter each time a new row is added
-        //   }
-        // }
+            newRowCounter++;
+            // const newRow = document.createElement("tr");
+            // ... existing code ...
+
+            // tableBody.appendChild(newRow);
+            ; // increment the counter each time a new row is added
+          }
+
+          
+        }
+
+        if (groups[i]["Student Type"] == "Fresh") {
+          console.log("Fresh Count:", freshCount);
+          freshCount++; // exit the loop if the counter reaches 20
+        } else {
+          StudentCount++;
+        }
 
         // console.log("Number of new rows created:", newRowCounter); // display the count in the console
 
       tableBody.appendChild(newRow);
-      GroupCount.innerHTML = newRowCounter;
+      GroupCount.innerHTML =`${newRowCounter} / (${freshCount} Fresh)`;
       GroupTime.innerHTML = group.GroupTime;
       GroupModuleName.innerHTML = group.ModuleName;
       GroupStartDate.innerHTML = formatteddate;
-      newRowCounter++
     }
   }
 

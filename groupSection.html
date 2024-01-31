@@ -23,6 +23,7 @@
 
 
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/brands.min.css"
     integrity="sha512-L+sMmtHht2t5phORf0xXFdTC0rSlML1XcraLTrABli/0MMMylsJi3XA23ReVQkZ7jLkOEIMicWGItyK4CAt2Xw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -135,11 +136,14 @@
           <div class="box">
             <div class="d-flex">
               <h2 class="mt-2 mb-1 mx-4 fw-bold">Groups</h2>
-              <!-- <button id="EidtBtn" type="button" class="btn fw-bold btn-primary p-1 mt-2" data-bs-toggle="modal"
-                data-bs-target="#exampleModal1">
-                Edit Deadline
-              </button> -->
-              <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+              <!-- sms btn  -->
+              <button id="smsBtnM" data-bs-toggle="modal" data-bs-target="#groupsms" type="submit"
+                class="btn button mx-1"><iconify-icon class="qrIcon mx-1" icon="bi:chat-square-text" width="23"
+                  height="23"></iconify-icon>
+                <p class="mb-0">SMS</p>
+              </button>
+
+              <div class="modal fade" id="groupsms" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="alertMsg"></div>
                 <div class="modal-dialog modal-dialog-centered">
@@ -150,99 +154,56 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div class="dropdown mb-2">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                          Change Type Payment
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><button class="dropdown-item cash">cash</button></li>
-                          <li><button class="dropdown-item months">2 months</button></li>
-                          <li><button class="dropdown-item month-brefore-semester">month brefore semester</button></li>
-                        </ul>
-                      </div>
 
-                      <form method="POST" id="frmDeadlineEdit">
+                      <form method="POST" id="frmSms">
                         <div class="form-group form-floating mb-3 frmDiv ">
-                          <!-- code come from iterate of pushObj -->
-                        </div>
 
-                        <!-- display : none  -->
-                        <!-- <div class="form-group form-floating" style="display:none ;">
-                          <input name="Student NUM" type="text" placeholder="Amount" id="StudentNUM"
-                            class="form-control">
-                          <label for="StudentNUM">Amount</label>
-                        </div>
-                        <div class="form-group form-floating" style="display:none ;">
-                          <input name="Scholarship" type="text" placeholder="Scholarship" id="Scholarship"
-                            class="form-control">
-                          <label for="Scholarship">Scholarship</label>
-                        </div>
-                        <div class="form-group form-floating" style="display:none ;">
-                          <input name="Reception" type="text" placeholder="Scholarship" id="Reception"
-                            class="form-control">
-                          <label for="Reception">Scholarship</label>
-                        </div>
-                        <div class="form-group form-floating" style="display:none ;">
-                          <input name="Fesh/St" type="text" placeholder="Scholarship" id="fresh" class="form-control">
-                          <label for="fresh">Scholarship</label>
-                        </div>
-                        <div class="form-group form-floating" style="display:none ;">
-                          <input name="Study type" type="text" placeholder="Scholarship" id="StudyType"
-                            class="form-control">
-                          <label for="StudyType">Scholarship</label>
-                        </div> -->
-                        <div class="form-group form-floating" style="display:none ;">
-                          <input name="Student Num" type="number" placeholder="Student Num" id="StudentNum"
-                            class="form-control">
-                          <label for="StudentNum">Student Num</label>
+
+                          <div class="form-group form-floating mt-3" style="display:none ;">
+                            <input name="Employee" type="text" id="smsEmployee" class="form-control">
+                            <label for="smsEmployee">Employee</label>
+                          </div>
                         </div>
 
                         <div class="form-group form-floating" style="display:none ;">
-                          <input name="user" type="text" placeholder="Student Num" id="user" class="form-control">
-                          <label for="user">Student Num</label>
+                          <input name="Student Num" type="number" placeholder="Student Num" id="smsStudentNum"
+                            class="form-control">
+                          <label for="smsStudentNum">Student Num</label>
                         </div>
 
-                        <div class="form-group form-floating">
-                          <input name="Amount" type="text" placeholder="Amount" id="SelectDueDate1" required
+
+                        <div class="form-group form-floating" style="display:none ;">
+                          <input name="Timestamp" type="text" placeholder="Student Num" id="smsTimestamp"
                             class="form-control">
-                          <label for="SelectDueDate1">Amount</label>
+                          <label for="smsTimestamp">Student Nu m</label>
                         </div>
+
                         <div class="form-floating mt-3">
-                          <select class="form-select" id="selectInvoiceType" name="Invoice type" required>
+                          <select class="form-select" id="SmsSelect">
+                            <!-- code come from iterate -->
                             <option selected></option>
-                            <!-- <option value="Extend">Extend</option> -->
-                            <option value="Transfer">TRANSFER</option>
-                            <option value="Re-test">Retest</option>
-                            <option value="Re-entry">Re entry</option>
+                            <option value="call me">call me </option>
                           </select>
-                          <label for="selectInvoiceType">select Invoice type</label>
+                          <label for="SmsSelect">select Sms</label>
                         </div>
-                        <div class="form-floating mt-3">
-                          <select class="form-select" id="floatingSelect" name="Cash type" required>
-                            <option selected></option>
-                            <option value="cash">cash</option>
-                            <option value="Vodafone cash">Vodafone cash</option>
-                            <option value="Bank Account">Bank Account</option>
-                            <option value="Online Payment">Online Payment</option>
-                          </select>
-                          <label for="floatingSelect">select cash type</label>
-                        </div>
+
 
                         <div class="form-group mt-3 form-floating">
-                          <textarea name="Note" class="form-control" placeholder="Nots" id="Textarea"
-                            rows="5"></textarea>
-                          <label for="Textarea" class="form-label">Nots</label>
+                          <textarea name="Sms" class="form-control" placeholder="Nots" id="smsTextarea" rows="10"
+                            required></textarea>
+                          <label for="smsTextarea" class="form-label">Write Sms</label>
                         </div>
+
+
                         <div class="my-3">
                           <div class="error-message"></div>
-                          <div dir="ltr" class="sent-message text-center alert alert-success d-none" id="msg"></div>
+                          <div dir="ltr" class="sent-message text-center alert alert-success d-none"></div>
 
                         </div>
                         <div class="d-flex justify-content-center mt-3">
-                          <button class="btn btn-primary scrollto btn-info text-light d-flex" id="btnSubmit"
-                            type="submit">
-                            Submit
-                            <div id="spinner-container"></div>
+                          <button class="btn btn-primary scrollto btn-info text-light d-flex smsBtn" type="submit">
+                            Send
+                            <div id="spinner-container3"></div>
                           </button>
                         </div>
                       </form>
@@ -250,6 +211,88 @@
                   </div>
                 </div>
               </div>
+
+              <!-- email btn  -->
+
+        <button id="emailBtnM" data-bs-toggle="modal" data-bs-target="#groupEmail" type="submit"
+        class="btn button mx-1"><iconify-icon class="qrIcon mx-1" icon="bi:envelope" width="23"
+          height="23"></iconify-icon>
+        <p class="mb-0">Email</p>
+      </button>
+
+      <div class="modal fade" id="groupEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="alertMsg"></div>
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Please Fillfull All Inputs
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <form method="POST" id="frmEmail">
+                <div class="form-group form-floating mb-3 frmDiv ">
+
+
+                  <div class="form-group form-floating mt-3" style="display:none ;">
+                    <input name="Employee" type="text" id="emailEmployee" class="form-control">
+                    <label for="emailEmployee">Employee</label>
+                  </div>
+                </div>
+
+                <div class="form-group form-floating" style="display:none ;">
+                  <input name="Student Num" type="number" placeholder="Student Num" id="emailStudentNum"
+                    class="form-control">
+                  <label for="emailStudentNum">Student Num</label>
+                </div>
+
+
+                <div class="form-group form-floating" style="display:none ;">
+                  <input name="Timestamp" type="text" placeholder="Student Num" id="emailTimestamp"
+                    class="form-control">
+                  <label for="emailTimestamp">Student Num</label>
+                </div>
+
+                <div class="form-floating mt-3">
+                  <select class="form-select" id="EmailSelect">
+                    <!-- code come from iterate -->
+                    <option selected></option>
+                    <option value="call me">call me </option>
+                  </select>
+                  <label for="EmailSelect">select Email</label>
+                </div>
+
+                <div class="form-group mt-3 form-floating">
+                  <input name="Subject" class="form-control" placeholder="Nots" id="EmailSubject" rows="10"
+                    required></input>
+                  <label for="EmailSubject" class="form-label">Subject</label>
+                </div>
+
+
+                <div class="form-group mt-3 form-floating">
+                  <textarea name="Email" class="form-control" placeholder="Nots" id="EmailTextarea" rows="10"
+                    required></textarea>
+                  <label for="EmailTextarea" class="form-label">Email</label>
+                </div>
+
+
+                <div class="my-3">
+                  <div class="error-message"></div>
+                  <div dir="ltr" class="sent-message text-center alert alert-success d-none" id="msg"></div>
+
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <button class="btn btn-primary scrollto btn-info text-light d-flex emailBtn" type="submit">
+                    Submit
+                    <div id="spinner-container4"></div>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
             </div>
             <!-- <button id="openPopupButton">Add Complaint</button> -->
             <div id="popupContainer">
@@ -279,7 +322,7 @@
               <div class=" d-flex align-items-center">
                 <p style="margin-bottom: 0;">Group Time :</p>
                 <span id="GroupTime"></span>
-              </div>  
+              </div>
             </div>
             <div class="cardd">
               <div class=" d-flex align-items-center">
@@ -352,6 +395,8 @@
 
     <script src="./bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
     <script src="./bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
 
 
     <!-- <script src="./js pages/main.js"></script> -->

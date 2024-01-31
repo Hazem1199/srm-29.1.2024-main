@@ -49,7 +49,11 @@ const progressBar = document.getElementById("progress-bar");
 const level = document.getElementById("level");
 
 
+const welcome = document.querySelector('.Welcome');
+var userr = localStorage.getItem("myCode");
+console.log(userr);
 
+welcome.innerHTML = `Welcome ${userr}!`
 
 
 
@@ -991,7 +995,7 @@ function updateButtonState() {
   const appBtn = document.querySelector('.appBtn');
   const digitalIdBtn = document.querySelector('.digitalIdBtn');
   const invoiceBtn = document.querySelector('.invoiceBtn');
-  const cancelBtn = document.querySelector('.cancelBtn');
+  const cancelBtn = document.querySelector('#cancel');
   const smsBtnM = document.querySelector('#smsBtnM');
   const emailBtnM = document.querySelector('#emailBtnM');
   const onlineShareBtn = document.querySelector('#onlineShareBtn');
@@ -1099,11 +1103,7 @@ appBtn.addEventListener('click', () => {
 
 // console.log(user);
 
-const welcome = document.querySelector('.Welcome');
-var userr = localStorage.getItem("myCode");
-console.log(userr);
 
-welcome.innerHTML = `Welcome ${userr}!`
 
 
 
